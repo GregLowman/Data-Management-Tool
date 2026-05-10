@@ -27,10 +27,7 @@ def get_rotation(file_path_with_file_name):
     return rotation
 
 
-video_path = "C:/Users/glowm/OneDrive/Desktop/new_database/" \
-             "First Neighborhood/Videos/DJI_20220519_114715_641_video.MP4"
+# Set to the full path of the video file you want to check rotation for
+video_path = ''
 
-video_2_path = "C:/Users/glowm/OneDrive/Desktop/new_database/" \
-               "First Neighborhood/Videos/DJI_20220519_114746_984_video.MP4"
-
-get_rotation(video_2_path)
+get_rotation(video_path)

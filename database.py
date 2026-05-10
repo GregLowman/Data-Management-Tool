@@ -3,9 +3,15 @@ import os
 import shutil
 import subprocess
 
-starting_folder = 'C:/Users/glowm/OneDrive/Desktop/Program_Pics/'
-ending_folder = "C:/Users/glowm/OneDrive/Desktop/new_database"
-sorting_software = "C:\\Users\\glowm\\OneDrive\\Desktop\\For_Python\\exiftool-12.42\\exiftool.exe"
+# Set to the source directory containing your neighbourhood subfolders (e.g. the USB drive root)
+starting_folder = ''
+
+# Set to the destination directory where the organised folders will be created
+ending_folder = ''
+
+# Set to the full path of your local exiftool executable — download at https://exiftool.org/
+sorting_software = ''
+
 picture = 'P: '
 video = 'V: '
 insta = 'Rotation                        : 0'
@@ -60,10 +66,10 @@ def sort():
     If the file is a csv, it will convert it to text and then write it in the appropriate folder.
     """
     for z in neighborhood_names:
-        picture_folder = f"C:/Users/glowm/OneDrive/Desktop/new_database/{z}/Pictures"
-        video_folder = f"C:/Users/glowm/OneDrive/Desktop/new_database/{z}/Videos"
-        picture_caption_folder = f"C:/Users/glowm/OneDrive/Desktop/new_database/{z}/Picture_Captions"
-        video_caption_folder = f"C:/Users/glowm/OneDrive/Desktop/new_database/{z}/Video_Captions"
+        picture_folder = os.path.join(ending_folder, z, "Pictures")
+        video_folder = os.path.join(ending_folder, z, "Videos")
+        picture_caption_folder = os.path.join(ending_folder, z, "Picture_Captions")
+        video_caption_folder = os.path.join(ending_folder, z, "Video_Captions")
         path = f"{starting_folder}/{z}"
 
         for file in os.listdir(path):
@@ -95,14 +101,14 @@ def build_folders():
     for x in os.listdir(starting_folder):
         neighborhood_names.append(x)
     for x in neighborhood_names:
-        main_folder = f"C:/Users/glowm/OneDrive/Desktop/new_database/{x}"
-        picture_caption_folder = f"C:/Users/glowm/OneDrive/Desktop/new_database/{x}/Picture_Captions"
-        video_caption_folder = f"C:/Users/glowm/OneDrive/Desktop/new_database/{x}/Video_Captions"
-        picture_folder = f"C:/Users/glowm/OneDrive/Desktop/new_database/{x}/Pictures"
-        video_folder = f"C:/Users/glowm/OneDrive/Desktop/new_database/{x}/Videos"
-        insta_reel_folder = f"C:/Users/glowm/OneDrive/Desktop/new_database/{x}/Videos/InstaReels"
-        youtube_folder = f"C:/Users/glowm/OneDrive/Desktop/new_database/{x}/Videos/YouTube"
-        unknown_folder = f"C:/Users/glowm/OneDrive/Desktop/new_database/{x}/Videos/Unknown"
+        main_folder = os.path.join(ending_folder, x)
+        picture_caption_folder = os.path.join(ending_folder, x, "Picture_Captions")
+        video_caption_folder = os.path.join(ending_folder, x, "Video_Captions")
+        picture_folder = os.path.join(ending_folder, x, "Pictures")
+        video_folder = os.path.join(ending_folder, x, "Videos")
+        insta_reel_folder = os.path.join(ending_folder, x, "Videos", "InstaReels")
+        youtube_folder = os.path.join(ending_folder, x, "Videos", "YouTube")
+        unknown_folder = os.path.join(ending_folder, x, "Videos", "Unknown")
 
         path_list = [
             ending_folder, main_folder, picture_caption_folder,
